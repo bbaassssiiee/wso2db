@@ -1,6 +1,13 @@
 ---
 # tasks file for wso2db
 
+- name: Ensure unzip is installed
+  delegate_to: localhost
+  run_once: true
+  package:
+    name: unzip
+    state: present
+
 - name: Ensure directory files/packs
   delegate_to: localhost
   connection: local
