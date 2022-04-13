@@ -2,6 +2,7 @@
 # tasks file for wso2db
 
 - name: Ensure unzip is installed
+  when: ansible_env.container is defined
   delegate_to: localhost
   run_once: true
   package:
