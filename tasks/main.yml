@@ -27,9 +27,9 @@
   get_url:
     url: "{{ remote_pack }}"
     dest: "{{ product_package_location }}/packs/{{ product_name }}-{{ product_version }}.zip"
-    mode: u=rw,g=r,o=r
+    mode: u=xrw,g=r,o=r
 
-- name: Unzip WSO2 API Manager Package
+- name: Unzip WSO2 API Manager Package locally
   delegate_to: localhost
   connection: local
   run_once: true
@@ -38,9 +38,9 @@
     src: "{{ product_package_location }}/packs/{{ product_name }}-{{ product_version }}.zip"
     dest: "{{ product_package_location }}/packs/"
     creates: "{{ product_package_location }}/packs/{{ product_name }}-{{ product_version }}/LICENSE.txt"
-    mode: u=rw,g=r,o=r
+    mode: preserve
     remote_src: false
-  no_log: false
+  no_log: true
 
 - name: Run task for H2
   when: wso2am_db_type == 'h2'
