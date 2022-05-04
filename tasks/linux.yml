@@ -22,6 +22,6 @@
   unarchive:
     src: "{{ product_package_location }}/packs/{{ product_name }}-{{ product_version }}.zip"
     dest: "{{ product_dir }}"
-    mode: u=rw,g=r,o=r
+    mode: u=rwX,g=r,o=r
     remote_src: false
   no_log: false
